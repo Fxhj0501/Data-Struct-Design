@@ -43,12 +43,7 @@
         new BMapSub.Size(50, 80)
     );
     {% for eachStation in final_path%}
-        if(eachStation == final_path[0])
-            var marker1 = new BMapSub.Marker('{{ eachStation }}', {icon: startIcon});
-            alert('{{ eachStation }}');
-        else
         var marker1 = new BMapSub.Marker('{{ eachStation }}');
-
         subway.addMarker(marker1);
     {% endfor %}
     subway.setCenter('西直门');

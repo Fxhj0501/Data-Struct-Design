@@ -42,11 +42,16 @@
         'https://api.map.baidu.com/images/subway/start-bak.png',
         new BMapSub.Size(50, 80)
     );
-    {% for eachStation in final_path%}
-        var marker1 = new BMapSub.Marker('{{ eachStation }}');
+    {% for list_item in final_path %}
+        {% if list_item == final_path[0] %}
+            subway.setCenter('{{list_item}}');
+            var marker1 = new BMapSub.Marker('{{ list_item }}', {icon: startIcon});
+        {% else %}
+            var marker1 = new BMapSub.Marker('{{ list_item }}');
+        {% endif %}
         subway.addMarker(marker1);
     {% endfor %}
-    subway.setCenter('西直门');
+
 <!--    var marker = new BMapSub.Marker('西直门', {icon: startIcon});-->
 <!--    subway.addMarker(marker);-->
 <!--    setTimeout(1000)-->

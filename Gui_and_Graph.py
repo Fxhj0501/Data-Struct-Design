@@ -129,6 +129,42 @@ def gui():
                 f.write(station+'\n')
     def show_graph():
         os.system('python openHTML.py')
+    def inital_graph():
+        lon_s = []
+        lat_s = []
+        stations = []
+        with open('location.txt', 'r') as f:
+            for i in f:
+                hang = i.split(' ')
+                x = hang[0].split(',')
+                stations.append(x)
+                y = hang[1].split(',')
+                lon_s.append(float(y[0]))
+                lat_s.append(float(str(y[1])))
+        path = list()
+        final_path = list()
+        start = start_station.get()
+        destination = get_des.get()
+        parent_dict, distance_dict = dijkstra(start)
+        path.append(destination)
+        final_path = serach_path(start, parent_dict, destination, path)
+        final_lon_s = []
+        final_lat_s = []
+        point = []
+        for item in final_path:
+            i = 0
+            for a in stations:
+                if a[0] == item:
+                    final_lon_s.append(lon_s[i])
+                    final_lat_s.append(lat_s[i])
+                    point.append(i)
+                    i = 0
+                    break
+                else:
+                    i = i + 1
+        draw_pic_final(lon_s, lat_s, final_lon_s, final_lat_s, point)
+
     confirm_2 = tk.Button(window,text = "确认",font = ('Arial',18),command = cal).place(x = 350,y = 105,anchor = 'nw')
-    query = tk.Button(window, text="查询路线轨迹", font=('Arial', 18), command=show_graph).place(x=220, y=515, anchor='nw')
+    query = tk.Button(window, text="百度地图显示路线", font=('Arial', 18), command=show_graph).place(x=300, y=535, anchor='nw')
+    query = tk.Button(window, text="动态查询路线轨迹", font=('Arial', 18), command=inital_graph).place(x=100, y=535, anchor='nw')
     window.mainloop()

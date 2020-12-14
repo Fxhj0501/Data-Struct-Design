@@ -42,22 +42,21 @@
         'https://api.map.baidu.com/images/subway/start-bak.png',
         new BMapSub.Size(50, 80)
     );
+    var endIcon = new BMapSub.Icon(
+        'https://api.map.baidu.com/images/subway/end-bak.png',
+        new BMapSub.Size(50, 80)
+    );
     {% for list_item in final_path %}
         {% if list_item == final_path[0] %}
-            subway.setCenter('{{list_item}}');
             var marker1 = new BMapSub.Marker('{{ list_item }}', {icon: startIcon});
+        {% elif list_item == final_path|last %}
+            var marker1 = new BMapSub.Marker('{{ list_item }}', {icon: endIcon});
         {% else %}
             var marker1 = new BMapSub.Marker('{{ list_item }}');
         {% endif %}
         subway.addMarker(marker1);
     {% endfor %}
-
-<!--    var marker = new BMapSub.Marker('西直门', {icon: startIcon});-->
-<!--    subway.addMarker(marker);-->
-<!--    setTimeout(1000)-->
-<!--    var marker = new BMapSub.Marker('新街口');-->
-<!--    subway.addMarker(marker);-->
-<!--    subway.setCenter('西直门');-->
+    subway.setCenter('中国美术馆');
     subway.setZoom(1);
     subway.setAnimation(BMAP_ANIMATION_BOUNCE);
 </script>

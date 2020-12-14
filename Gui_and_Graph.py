@@ -165,6 +165,6 @@ def gui():
         draw_pic_final(lon_s, lat_s, final_lon_s, final_lat_s, point)
 
     confirm_2 = tk.Button(window,text = "确认",font = ('Arial',18),command = cal).place(x = 350,y = 105,anchor = 'nw')
-    query = tk.Button(window, text="百度地图显示路线", font=('Arial', 18), command=show_graph).place(x=300, y=535, anchor='nw')
+    query = tk.Button(window, text="百度地图显示路线", font=('Arial', 18), ).place(x=300, y=535, anchor='nw')
     query = tk.Button(window, text="动态查询路线轨迹", font=('Arial', 18), command=inital_graph).place(x=100, y=535, anchor='nw')
     window.mainloop()

@@ -116,9 +116,6 @@ def draw_pic_final(lon_s,lat_s,final_lon_s,final_lat_s,point):
     canvas = FigureCanvasTkAgg(fig, master=window_2)
     canvas.draw()
     canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=1)
-    toolbar = NavigationToolbar2Tk(canvas, window_2)
-    toolbar.update()
-    canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=1)
     def back():
         window_2.destroy()
     button_back = tk.Button(master=window_2, text="Back", font=('Comic Sans MS', 30), command= back)

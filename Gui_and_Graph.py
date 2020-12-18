@@ -175,7 +175,7 @@ def gui():
                     content += '->'
             msg = MIMEText(content, 'plain', 'utf-8')
             msg['From'] = formataddr(["From冯兄化吉", my_sender])  # 括号里的对应发件人邮箱昵称、发件人邮箱账号
-            msg['To'] = formataddr(["YZW", email_receiver])  # 括号里的对应收件人邮箱昵称、收件人邮箱账号
+            msg['To'] = formataddr(["Reiceiver", email_receiver])  # 括号里的对应收件人邮箱昵称、收件人邮箱账号
             msg['Subject'] = "您的地铁路线"  # 邮件的主题，也可以说是标题
 
             server = smtplib.SMTP_SSL("smtp.qq.com", 465)  # 发件人邮箱中的SMTP服务器，端口是25
@@ -189,7 +189,7 @@ def gui():
             print("邮件发送成功")
         else:
             print("邮件发送失败")
-        tk.Button(window,text = "确认",font = ('Arial',18),command = cal).place(x = 350,y = 105,anchor = 'nw')
+    tk.Button(window,text = "确认",font = ('Arial',18),command = cal).place(x = 350,y = 105,anchor = 'nw')
     tk.Button(window, text="百度地图显示路线", font=('Arial', 18), ).place(x=300, y=535, anchor='nw')
     tk.Button(window, text="动态查询路线轨迹", font=('Arial', 18), command=inital_graph).place(x=100, y=535, anchor='nw')
     tk.Button(window, text="确认", font=('Arial', 18), command=get_email).place(x=360, y=600,anchor='nw')

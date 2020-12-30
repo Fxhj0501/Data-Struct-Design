@@ -30,10 +30,7 @@ temp_dict = {}
 for i in road:
     for j, k in enumerate(road[i]):
         if j == 0:
-            #temp = road_graph[k.get_name()].add(road[i][j + 1])
             temp = road[i][j + 1]
-            # road_graph[k.get_name()].add(temp)
-            # road_graph_next[k.get_name()].add(temp)
             temp_dict[temp.get_name()] = k.get_dis()#后面那站到该站到距离
             if k.get_name in manage_station:
                 manage_station[k.get_name()].update(temp_dict)
@@ -43,20 +40,13 @@ for i in road:
         elif j == len(road[i]) - 1:
             temp_name = road[i][j-1].get_name()
             temp = road[i][j - 1]
-            # road_graph[temp_name].add(temp)
-            # road_graph_prev[temp_name].add(temp)
             temp_dict[temp.get_name()] = temp.get_dis()#上一站到现在这站到距离
             if k.get_name in manage_station:
                 manage_station[k.get_name()].update(temp_dict)
             else:
                 manage_station[k.get_name()] = temp_dict
             temp_dict ={}
-            #print(road_graph[k.get_name()])
         else:
-            # road_graph[temp_name].add(road[i][j + 1])
-            # road_graph[temp_name].add(road[i][j - 1])
-            # road_graph_prev[temp_name].add(road[i][j - 1])
-            # road_graph_next[temp_name].add(road[i][j + 1])
             temp = road[i][j-1]
             temp_dict[temp.get_name()] = temp.get_dis()
             temp = road[i][j+1]
